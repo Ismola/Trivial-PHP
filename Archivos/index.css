@@ -1,0 +1,329 @@
+
+    @import url('https://fonts.googleapis.com/css2?family=Fruktur&family=Playfair+Display&display=swap');
+
+    * {
+        transition: .7s;
+        font-family: 'Playfair Display', serif;
+    }
+
+    body {
+        padding: 0;
+        margin: 0;
+        background: #eee;
+        cursor: cell;
+        box-sizing: border-box;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+         /*Hide scrollbars */
+
+    }
+
+
+    .contenedor {
+
+
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        max-width: 1400px;
+        min-width: 700px;
+
+
+    }
+
+    .border1 {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        width: 30px;
+        height: 30px;
+
+        border-left: 3px solid black;
+        border-top: 3px solid black;
+
+
+    }
+
+    .border2 {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 30px;
+        height: 30px;
+
+        border-right: 3px solid black;
+        border-top: 3px solid black;
+    }
+
+    .border3 {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        width: 30px;
+        height: 30px;
+
+        border-left: 3px solid black;
+        border-bottom: 3px solid black;
+    }
+
+    .border4 {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        width: 30px;
+        height: 30px;
+
+        border-right: 3px solid black;
+        border-bottom: 3px solid black;
+    }
+
+    .title {
+        position: absolute;
+
+
+        top: 27%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+
+        font-size: 5em;
+    }
+
+
+    .boto1 {
+        position: absolute;
+        top: 50%;
+        left: 33%;
+        transform: translate(-50%, -50%);
+    }
+
+    button {
+        background: transparent;
+        border: 3px solid black;
+        width: 200px;
+        line-height: 70px;
+
+        font-size: 2em;
+
+        cursor: cell;
+
+    }
+
+
+
+    button:hover {
+        background: black;
+        color: #eee;
+
+    }
+
+    .boto2 {
+        position: absolute;
+        top: 50%;
+        left: 66%;
+        transform: translate(-50%, -50%);
+    }
+
+    .editar {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: none;
+
+    }
+
+
+
+    .posicion {
+        position: absolute;
+        background: black;
+        border: 3px solid black;
+        width: 80%;
+
+        /* padding: 5px; */
+        top: 75%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        display: flex;
+        flex-direction: row;
+
+        min-height: 200px;
+
+
+    }
+
+    .posicion>div {
+        width: 100%;
+        /*height: 100%;*/
+        /* background: black; */
+        /* border: 3px solid black;*/
+        background: #eee;
+        color: black;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+
+        transition: all .2s;
+
+
+    }
+
+    .posicion>div>div:nth-child(1) {
+        width: 100%;
+        /* background: red; */
+        /* border-bottom: 3px solid black; */
+        /*line-height: 50px;*/
+        text-align: center;
+        font-size: 3em;
+
+    }
+
+    .posicion>div>div:nth-child(2) {
+        /*margin-top: 40px;*/
+        padding: 5px;
+        /*height: 50px;*/
+        font-size: 1.5em;
+        text-align: center;
+    }
+
+    .posicion>div>div:nth-child(3) {
+        padding: 5px;
+        /*height: 50px;*/
+        font-size: 1.5em;
+        text-align: center;
+    }
+
+    .posicion>div:hover {
+        background: black;
+        color: #eee;
+
+    }
+
+    .contenedor2,
+    .contenedor3 {
+        position: absolute;
+        width: 100px;
+        height: 200px;
+
+        top: -100px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        /* background: red; */
+
+        max-width: 1400px;
+        min-width: 700px;
+        /*overflow: hidden;*/
+        /* display: none; */
+
+
+    }
+
+    #title2,
+    #title3 {
+        top: 50%;
+    }
+
+    .atras {
+        position: absolute;
+        /* background: red; */
+        top: 50px;
+        left: 50px;
+        border: 7px solid #000000;
+        border-right-color: transparent;
+        border-left-color: transparent;
+        border-width: 0px 10px 20px;
+        transform: rotate(180deg);
+        display: flow;
+
+    }
+
+    .atras:hover {
+        transform: rotate(0deg);
+        transform: scale(3);
+    }
+
+    /* @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+        .h1 {
+            backdrop-filter: blur(20px);
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .warning {
+            display: none;
+        }
+    } */
+    .color{
+        position: absolute;
+        bottom: 0;
+
+        /*border: 3px solid #eee;*/
+
+        left: 0;
+        width: 20%;
+
+        height: 0;
+        /*background: #ffffff;*/
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+
+        border-radius: 0;
+
+        overflow: hidden;
+
+    }
+    .color >  div:first-child{
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+    }
+    .rojo{
+        /*background: lightcoral;*/
+
+    }
+
+    .verde{
+        /*background: lightgreen;*/
+        left: 25%;
+    }
+    .amarillo{
+        /*background: gold;*/
+        left: 50%;
+    }
+
+    .azul{
+        /*background: lightblue;*/
+        left: 75%;
+    }
+    .azul >  div:first-child{
+        background: lightblue;
+    }
+    .amarillo >  div:first-child{
+        background: gold;
+    }
+    .verde >  div:first-child{
+        background: lightgreen;
+    }
+    .rojo > div:first-child{
+        background: lightcoral;
+    }
+
+
+    .raya{
+        height: 100%;
+        width: 80%;
+        border-bottom: 1px solid #eee;
+    }
