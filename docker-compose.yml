@@ -15,7 +15,9 @@ services:
     networks:
       - cloudflare_default
     command: >
-      bash -c "chmod 777 /var/www/html/Ficheros &&
+      bash -c "mkdir -p /var/www/html/Ficheros &&
+      touch /var/www/html/Ficheros/datos /var/www/html/Ficheros/jugadores &&
+      chmod 777 /var/www/html/Ficheros &&
       chmod 666 /var/www/html/Ficheros/datos /var/www/html/Ficheros/jugadores &&
       chown -R www-data:www-data /var/www/html/Ficheros &&
       sed -i 's/DirectoryIndex.*/DirectoryIndex index.php index.html/g' /etc/apache2/mods-enabled/dir.conf &&
