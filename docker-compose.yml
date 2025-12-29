@@ -19,9 +19,17 @@ services:
       touch /var/www/html/Ficheros/datos /var/www/html/Ficheros/jugadores &&
       chmod 777 /var/www/html/Ficheros &&
       chmod 666 /var/www/html/Ficheros/datos /var/www/html/Ficheros/jugadores &&
-      chown -R www-data:www-data /var/www/html/Ficheros &&
+      chmod 755 /var/www/html &&
+      chown -R www-data:www-data /var/www/html &&
       sed -i 's/DirectoryIndex.*/DirectoryIndex index.php index.html/g' /etc/apache2/mods-enabled/dir.conf &&
+      sed -i '/<Directory \\/var\\/www\\/>/,/<\\/Directory>/c\\
+      <Directory /var/www/html>\\
+        Options Indexes FollowSymLinks\\
+        AllowOverride All\\
+        Require all granted\\
+      </Directory>' /etc/apache2/sites-enabled/000-default.conf &&
       a2enmod rewrite &&
+      a2enmod headers &&
       apache2-foreground"
 
 networks:
