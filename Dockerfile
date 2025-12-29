@@ -3,13 +3,17 @@ FROM php:8.2-apache
 # Habilitar módulos de Apache
 RUN a2enmod rewrite
 
-# Configurar Apache para permitir acceso
+# Configurar Apache completamente
 RUN echo '<Directory /var/www/html>\n\
     Options Indexes FollowSymLinks\n\
     AllowOverride All\n\
     Require all granted\n\
+    DirectoryIndex index.php index.html\n\
     </Directory>' > /etc/apache2/conf-available/docker-php.conf && \
     a2enconf docker-php
+
+# Asegurar que PHP está habilitado
+RUN echo "DirectoryIndex index.php index.html" >> /etc/apache2/apache2.conf
 
 # Crear directorio y archivos con permisos
 RUN mkdir -p /var/www/html/Ficheros && \
