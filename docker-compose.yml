@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   web:
-    build: .
+    image: php:8.2-apache
     ports:
       - "8080:80"
     volumes:
@@ -14,6 +14,13 @@ services:
     restart: unless-stopped
     networks:
       - cloudflare_default
+    command: >
+      bash -c "chmod 777 /var/www/html/Ficheros &&
+      chmod 666 /var/www/html/Ficheros/datos /var/www/html/Ficheros/jugadores &&
+      chown -R www-data:www-data /var/www/html/Ficheros &&
+      sed -i 's/DirectoryIndex.*/DirectoryIndex index.php index.html/g' /etc/apache2/mods-enabled/dir.conf &&
+      a2enmod rewrite &&
+      apache2-foreground"
 
 networks:
   cloudflare_default:
