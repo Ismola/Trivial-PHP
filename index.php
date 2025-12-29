@@ -104,16 +104,18 @@ while (!feof($fichero)){
     $linea = fgets($fichero);
 //    Ahora digo: si linea no es un salto de linea o una cadena vacia (para qye no me guarde posiciones del array sin datos)
     if ($linea != "\n" && $linea!= ""){
+        // Si contador es 0, significa que acabamos de guardar una pregunta, resincronizamos
+        if ($cont == 0) $cont = 1;
 //        Entonces súbeme esa linea a pregunta guardada, que recuerdo que este array solo guardaba los datos de un array
-        array_push($preguntaguardada,$linea);
-//       Si contador es = a 8, significa que ya ha guardado 7 datos, y el siguiente es de la siguiente pregunta, por tanto....
+        array_push($preguntaguardada, trim($linea));
+//       Si contador es = a 8, significa que ya ha guardado 8 datos de la pregunta
         if ($cont == 8){
 //            Por tanto me guarda la $preguntaguardada a $preguntas
             array_push($preguntas,$preguntaguardada);
 //            Restablezco $preguntaguardada a un array vacio
             $preguntaguardada = array();
-//            Y el contador a 1 para que vuelva a empezar ese proceso
-            $cont = 1;
+//            Y el contador a 0 para que se resincronice con la siguiente pregunta
+            $cont = 0;
 //            Si el contador no es 8, significa que todavía no se ha guardado todos los datos de la pregunta, por tanto suma 1 a contador
         }else{
             $cont++;

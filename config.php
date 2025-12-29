@@ -70,10 +70,10 @@ function vervariable($variable){
             <div class='categoria' >
                 <label for='categoria'>Selecciona la categoría:</label>
                 <select name='categoria' id='categoria' required>
-                    <option value='Matemáticas' style='background: lightblue'>Matemáticas</option>
-                    <option value='Literatura' style='background: lightcoral'>Literatura</option>
-                    <option value='Geología' style='background: lightgreen'>Geología</option>
-                    <option value='Inglés' style='background: gold '>Inglés</option>
+                    <option value='Programacion' style='background: lightblue'>Programacion</option>
+                    <option value='Informatica' style='background: lightcoral'>Informatica</option>
+                    <option value='Redes' style='background: lightgreen'>Redes</option>
+                    <option value='SistemasOperativos' style='background: gold '>SistemasOperativos</option>
                 </select>
             </div>
             <div class='foto'>
@@ -92,16 +92,16 @@ function vervariable($variable){
 //    Con esto cambio el borde de la tarjeta según  su categoría
 //    Con trim, quito los posibles huecos en blanco, o caracteres raros que se hayan podido generar en el proceso de guardado (sin ellos, la cosa falla)
 //$_SESSION["preguntas"][$i][6]) la i, es el numero de pregunta y el 6 es la categoria. Es decir, que la categoría va air cambiando segun cada vuelta del for
-                if (trim($_SESSION["preguntas"][$i][6]) == "Matemáticas"){
+                if (trim($_SESSION["preguntas"][$i][6]) == "Programacion"){
                     echo "border: 10px solid lightblue;";
                 }
-                if (trim($_SESSION["preguntas"][$i][6]) == "Literatura"){
+                if (trim($_SESSION["preguntas"][$i][6]) == "Informatica"){
                     echo "border: 10px solid lightcoral;";
                 }
-                if (trim($_SESSION["preguntas"][$i][6]) == "Geología"){
+                if (trim($_SESSION["preguntas"][$i][6]) == "Redes"){
                     echo "border: 10px solid lightgreen;";
                 }
-                if (trim($_SESSION["preguntas"][$i][6]) == 'Inglés'){
+                if (trim($_SESSION["preguntas"][$i][6]) == 'SistemasOperativos'){
                     echo "border: 10px solid gold;";
                 }
                 echo ("'>
@@ -148,25 +148,25 @@ function vervariable($variable){
 //    Todos estos ifs, sirven para detectar de que categoría es la pregunta, y poner su categoría en primer lugar.
 //Pregunto que si la categoria que hay escrita en el array es igual a la que se va a escribir, que me ponga el selected, que la muestra en primer lugar
 //$_SESSION["preguntas"][$i][6]) indica la categoria
-                if (trim($_SESSION["preguntas"][$i][6]) == "Matemáticas"){
-                    echo "<option selected value='Matemáticas' style='background: lightblue'>Matemáticas</option>";
+                if (trim($_SESSION["preguntas"][$i][6]) == "Programacion"){
+                    echo "<option selected value='Programacion' style='background: lightblue'>Programacion</option>";
                 }else{
-                    echo "<option value='Matemáticas' style='background: lightblue'>Matemáticas</option>";
+                    echo "<option value='Programacion' style='background: lightblue'>Programacion</option>";
                 }
-                if (trim($_SESSION["preguntas"][$i][6]) == "Literatura"){
-                    echo "<option selected value='Literatura' style='background: lightcoral'>Literatura</option>";
+                if (trim($_SESSION["preguntas"][$i][6]) == "Informatica"){
+                    echo "<option selected value='Informatica' style='background: lightcoral'>Informatica</option>";
                 }else{
-                    echo "<option value='Literatura' style='background: lightcoral'>Literatura</option>";
+                    echo "<option value='Informatica' style='background: lightcoral'>Informatica</option>";
                 }
-                if (trim($_SESSION["preguntas"][$i][6]) == "Geología"){
-                    echo "<option selected value='Geología' style='background: lightgreen'>Geología</option>";
+                if (trim($_SESSION["preguntas"][$i][6]) == "Redes"){
+                    echo "<option selected value='Redes' style='background: lightgreen'>Redes</option>";
                 }else{
-                    echo "<option value='Geología' style='background: lightgreen'>Geología</option>";
+                    echo "<option value='Redes' style='background: lightgreen'>Redes</option>";
                 }
-                if (trim($_SESSION["preguntas"][$i][6]) == 'Inglés'){
-                    echo "<option selected value='Inglés' style='background: gold '>Inglés</option>";
+                if (trim($_SESSION["preguntas"][$i][6]) == 'SistemasOperativos'){
+                    echo "<option selected value='SistemasOperativos' style='background: gold '>SistemasOperativos</option>";
                 }else{
-                    echo "<option value='Inglés' style='background: gold '>Inglés</option>";
+                    echo "<option value='SistemasOperativos' style='background: gold '>SistemasOperativos</option>";
                 }
                 echo ("
                 </select>

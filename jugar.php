@@ -34,13 +34,13 @@ if (isset($_POST["correctisimo"])){
     $_SESSION["puntuacion"] = $_SESSION["puntuacion"] + $_SESSION["racha"];
 
 //Con esto miro de que categoria es la pregunta acertada y sumo 1 a la variable de su categoria (nos servirá para pintar cuantas hay acertadas de su grupo y para impedir que cuando se hayan acertado 5 de una, salgan mas preguntas)
-    if (trim($_SESSION["barajeadas"][$_SESSION["contador"]][6]) == "Matemáticas"){
+    if (trim($_SESSION["barajeadas"][$_SESSION["contador"]][6]) == "Programacion"){
         $_SESSION["mate"]++;
-    }if (trim($_SESSION["barajeadas"][$_SESSION["contador"]][6]) == "Literatura"){
+    }if (trim($_SESSION["barajeadas"][$_SESSION["contador"]][6]) == "Informatica"){
         $_SESSION["lite"]++;
-    }if (trim($_SESSION["barajeadas"][$_SESSION["contador"]][6]) == "Geología"){
+    }if (trim($_SESSION["barajeadas"][$_SESSION["contador"]][6]) == "Redes"){
         $_SESSION["geo"]++;
-    }if (trim($_SESSION["barajeadas"][$_SESSION["contador"]][6]) == 'Inglés'){
+    }if (trim($_SESSION["barajeadas"][$_SESSION["contador"]][6]) == 'SistemasOperativos'){
         $_SESSION["ingles"]++;
     }
 }else{
@@ -92,13 +92,13 @@ if (isset($_POST["correctisimo"])){
 //                Este for va desde la posicion de preguntas por la que vaya hasta la ultima pregunta
                 for ($abracadabra = $_SESSION["contador"]; $abracadabra<count($_SESSION["barajeadas"]);$abracadabra++){
 //                    En caso de que alguna de las cateogorias sea igual a 5, se sumará 1 a contador. Esto hará que cuando se hayan cumplido 5 preguntas de cierta categoría no vuelvan a salir ninguna pregunta mas de esa categoría
-                    if  ($_SESSION["mate"] >= 5 && trim($_SESSION["barajeadas"][$_SESSION["contador"]][6]) == "Matemáticas"){
+                    if  ($_SESSION["mate"] >= 5 && trim($_SESSION["barajeadas"][$_SESSION["contador"]][6]) == "Programacion"){
                         $_SESSION["contador"]++;
-                    }elseif ($_SESSION["lite"] >= 5 && trim($_SESSION["barajeadas"][$_SESSION["contador"]][6]) == "Literatura"){
+                    }elseif ($_SESSION["lite"] >= 5 && trim($_SESSION["barajeadas"][$_SESSION["contador"]][6]) == "Informatica"){
                         $_SESSION["contador"]++;
-                    }elseif ($_SESSION["geo"] >= 5 && trim($_SESSION["barajeadas"][$_SESSION["contador"]][6]) == "Geología"){
+                    }elseif ($_SESSION["geo"] >= 5 && trim($_SESSION["barajeadas"][$_SESSION["contador"]][6]) == "Redes"){
                         $_SESSION["contador"]++;
-                    }elseif  ($_SESSION["ingles"] >= 5 && trim($_SESSION["barajeadas"][$_SESSION["contador"]][6]) == "Inglés"){
+                    }elseif  ($_SESSION["ingles"] >= 5 && trim($_SESSION["barajeadas"][$_SESSION["contador"]][6]) == "SistemasOperativos"){
                         $_SESSION["contador"]++;
                     }else{
 //                       En caso de que esa pregunta contenga una pregunta válida, con una categoria que se pueda jugar aun, entonces sale del bucle y empieza la magia
@@ -114,7 +114,7 @@ if (isset($_POST["correctisimo"])){
     <input type='hidden' name='empezar' id=''>
     <div class='preguntas'>");
 //        Dependiendo de la clase que sea esa pregunta, me pintará el borde y la sombra de un color distinto
-            echo("<div class='tarjeta' style='");if (trim($_SESSION["barajeadas"][$_SESSION["contador"]][6]) == "Matemáticas"){echo "border: 10px solid lightblue;";echo "box-shadow: 2px 5px 41px 4px lightblue;";}if (trim($_SESSION["barajeadas"][$_SESSION["contador"]][6]) == "Literatura"){echo "border: 10px solid lightcoral;";echo "box-shadow: 2px 5px 41px 4px lightcoral;";}if (trim($_SESSION["barajeadas"][$_SESSION["contador"]][6]) == "Geología"){echo "border: 10px solid lightgreen;";echo "box-shadow: 2px 5px 41px 4px lightgreen;";}if (trim($_SESSION["barajeadas"][$_SESSION["contador"]][6]) == 'Inglés'){echo "border: 10px solid gold;";echo "box-shadow: 2px 5px 41px 4px gold;";}echo("'>");
+            echo("<div class='tarjeta' style='");if (trim($_SESSION["barajeadas"][$_SESSION["contador"]][6]) == "Programacion"){echo "border: 10px solid lightblue;";echo "box-shadow: 2px 5px 41px 4px lightblue;";}if (trim($_SESSION["barajeadas"][$_SESSION["contador"]][6]) == "Informatica"){echo "border: 10px solid lightcoral;";echo "box-shadow: 2px 5px 41px 4px lightcoral;";}if (trim($_SESSION["barajeadas"][$_SESSION["contador"]][6]) == "Redes"){echo "border: 10px solid lightgreen;";echo "box-shadow: 2px 5px 41px 4px lightgreen;";}if (trim($_SESSION["barajeadas"][$_SESSION["contador"]][6]) == 'SistemasOperativos'){echo "border: 10px solid gold;";echo "box-shadow: 2px 5px 41px 4px gold;";}echo("'>");
 //            En este div, se pondrá preguntas resueltas y debajo la puntuacion. Es el circulo blanco que se ve
             echo("<div class='contador'>");echo $_SESSION["preguntasresultas"];echo (" <br> <span>");echo $_SESSION["puntuacion"];echo ("pts</span></div>
             <div class='fotito'>
