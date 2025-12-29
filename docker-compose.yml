@@ -12,8 +12,6 @@ services:
     working_dir: /var/www/html
     container_name: trivial-php
     restart: unless-stopped
-    networks:
-      - cloudflare_default
     command: >
       bash -c "mkdir -p /var/www/html/Ficheros &&
       touch /var/www/html/Ficheros/datos /var/www/html/Ficheros/jugadores &&
@@ -30,8 +28,5 @@ services:
       </Directory>' /etc/apache2/sites-enabled/000-default.conf &&
       a2enmod rewrite &&
       a2enmod headers &&
-      apache2-foreground"
+      apache2-foreground
 
-networks:
-  cloudflare_default:
-    external: true
