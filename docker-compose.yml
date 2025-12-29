@@ -2,13 +2,11 @@ version: '3.8'
 
 services:
   web:
-    image: php:8.2-apache
+    image: php:8.2
     ports:
       - "8080:80"
     volumes:
       - .:/var/www/html
-    environment:
-      - APACHE_DOCUMENT_ROOT=/var/www/html
     working_dir: /var/www/html
     container_name: trivial-php
     restart: unless-stopped
@@ -18,42 +16,7 @@ services:
       touch /var/www/html/Ficheros/datos /var/www/html/Ficheros/jugadores &&
       chmod 777 /var/www/html/Ficheros &&
       chmod 666 /var/www/html/Ficheros/datos /var/www/html/Ficheros/jugadores &&
-      chmod 755 /var/www/html &&
-      chown -R www-data:www-data /var/www/html &&
-      sed -i 's/DirectoryIndex.*/DirectoryIndex index.php index.html/g' /etc/apache2/mods-enabled/dir.conf &&
-      cat > /etc/apache2/conf-available/cloudflare.conf << 'EOF'
-      RemoteIPHeader X-Forwarded-For
-      RemoteIPTrustedProxy 0.0.0.0/0
-      RemoteIPInternalProxy 172.16.0.0/12
-      SetEnvIf X-Forwarded-Proto https HTTPS=on
-      EOF
-      &&
-      cat > /etc/apache2/sites-available/000-default.conf << 'EOF'
-      <VirtualHost *:80>
-        ServerAdmin webmaster@localhost
-        DocumentRoot /var/www/html
-        <Directory /var/www/html>
-          Options Indexes FollowSymLinks
-          AllowOverride All
-          Require all granted
-          <IfModule mod_rewrite.c>
-            RewriteEngine On
-            RewriteBase /
-            RewriteCond %{REQUEST_FILENAME} !-f
-            RewriteCond %{REQUEST_FILENAME} !-d
-            RewriteRule ^.*$ index.php [L]
-          </IfModule>
-        </Directory>
-        ErrorLog \${APACHE_LOG_DIR}/error.log
-        CustomLog \${APACHE_LOG_DIR}/access.log combined
-      </VirtualHost>
-      EOF
-      &&
-      a2enmod rewrite &&
-      a2enmod headers &&
-      a2enmod remoteip &&
-      a2enconf cloudflare &&
-      apache2-foreground
+      php -S 0.0.0.0:80 -t /var/www/html
       "
     networks:
       - cloudflare_default
