@@ -1,10 +1,12 @@
-FROM php:8.2-apache
+FROM php:8.2-fpm
 
-# Habilitar módulo rewrite de Apache
-RUN a2enmod rewrite
+# Instalar dependencias necesarias
+RUN apt-get update && apt-get install -y \
+    nginx \
+    && rm -rf /var/lib/apt/lists/*
 
-# Copiar configuración de Apache
-COPY apache-config.conf /etc/apache2/sites-available/000-default.conf
+# Copiar configuración de nginx
+COPY nginx.conf /etc/nginx/sites-available/default
 
 # Copiar los archivos del proyecto
 COPY . /var/www/html/
@@ -13,7 +15,7 @@ COPY . /var/www/html/
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-# Cambiar permisos iniciales
+# Cambiar permisos
 RUN mkdir -p /var/www/html/Ficheros && \
     touch /var/www/html/Ficheros/datos /var/www/html/Ficheros/jugadores && \
     chown -R www-data:www-data /var/www/html && \
@@ -21,5 +23,7 @@ RUN mkdir -p /var/www/html/Ficheros && \
     chmod 666 /var/www/html/Ficheros/datos /var/www/html/Ficheros/jugadores
 
 WORKDIR /var/www/html
+
+EXPOSE 80
 
 ENTRYPOINT ["/entrypoint.sh"]

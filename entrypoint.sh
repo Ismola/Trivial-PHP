@@ -11,5 +11,8 @@ chmod 755 /var/www/html/Ficheros
 chmod 666 /var/www/html/Ficheros/datos
 chmod 666 /var/www/html/Ficheros/jugadores
 
-# Iniciar Apache
-apache2-foreground
+# Iniciar PHP-FPM en segundo plano
+php-fpm -D
+
+# Iniciar Nginx en primer plano
+nginx -g 'daemon off;'
