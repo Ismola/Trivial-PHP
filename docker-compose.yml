@@ -25,5 +25,8 @@ services:
       - trivial-network
 
 networks:
+  default:
+    name: cloudflare_default
+    driver: bridge
   trivial-network:
     driver: bridge
