@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     container_name: trivial
     networks:
-      - trivial-network
+      - cloudflare_default
 
   nginx:
     build:
@@ -19,11 +19,9 @@ services:
     depends_on:
       - php
     networks:
-      - trivial-network
+      - cloudflare_default
 
 networks:
-  default:
-    name: cloudflare_default
-    driver: bridge
-  trivial-network:
-    driver: bridge
+  cloudflare_default:
+    external: true
+
