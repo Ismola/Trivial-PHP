@@ -6,6 +6,8 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: trivial
+    restart_policy:
+      condition: unless-stopped
     networks:
       - cloudflare_default
 
@@ -14,6 +16,8 @@ services:
       context: .
       dockerfile: nginx.Dockerfile
     container_name: trivial-php
+    restart_policy:
+      condition: unless-stopped
     ports:
       - "8080:80"
     depends_on:
