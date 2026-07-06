@@ -7,8 +7,7 @@ services:
       dockerfile: Dockerfile
     container_name: trivial
     restart: unless-stopped
-    networks:
-      - cloudflare_default
+
 
   nginx:
     build:
@@ -20,10 +19,3 @@ services:
       - "8080:80"
     depends_on:
       - php
-    networks:
-      - cloudflare_default
-
-networks:
-  cloudflare_default:
-    external: true
-
