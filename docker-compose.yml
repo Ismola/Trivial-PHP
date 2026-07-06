@@ -1,21 +1,11 @@
 version: '3.8'
 
 services:
-  php:
+  app:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: trivial
-    restart: unless-stopped
-
-
-  nginx:
-    build:
-      context: .
-      dockerfile: nginx.Dockerfile
     container_name: trivial-php
     restart: unless-stopped
     ports:
       - "8080:80"
-    depends_on:
-      - php
