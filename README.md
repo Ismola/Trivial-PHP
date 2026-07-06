@@ -1,6 +1,6 @@
 # Trivial PHP
 
-Demo: https://trivial.ismola.dev/
+Demo: https://trivial-php.ismola.dev/
 
 Trivial realizado enteramente en PHP
  
